@@ -36,7 +36,7 @@ jobs:
         run: |
           V=${{ steps.ver.outputs.version }}
           for arch in amd64 arm64; do
-            mkdir -p "/tmp/src-$arch" "build/$arch"
+            mkdir -p "build/$arch" "/tmp/src-$arch"
             curl -fsSL -o "/tmp/agent-$arch.zip" \
               "https://github.com/nezhahq/agent/releases/download/${V}/nezha-agent_linux_${arch}.zip"
             unzip -o "/tmp/agent-$arch.zip" -d "/tmp/src-$arch"
