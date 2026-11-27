@@ -37,9 +37,9 @@ jobs:
           V=${{ steps.ver.outputs.version }}
           for arch in amd64 arm64; do
             mkdir -p "/tmp/src-$arch" "build/$arch"
-            curl -fsSL -o "/tmp/agent-$arch.tar.gz" \
-              "https://github.com/nezhahq/agent/releases/download/${V}/nezha-agent_linux_${arch}.tar.gz"
-            tar xzf "/tmp/agent-$arch.tar.gz" -C "/tmp/src-$arch"
+            curl -fsSL -o "/tmp/agent-$arch.zip" \
+              "https://github.com/nezhahq/agent/releases/download/${V}/nezha-agent_linux_${arch}.zip"
+            unzip -o "/tmp/agent-$arch.zip" -d "/tmp/src-$arch"
             BIN=$(find "/tmp/src-$arch" -name 'nezha-agent' -type f | head -n1)
             if [ -z "$BIN" ]; then
               echo "binary not found for $arch"
